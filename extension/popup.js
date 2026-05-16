@@ -202,7 +202,7 @@ function showSaveBanner(site, username, password, isUpdate = false, index = -1) 
     'font-size:13px;display:flex;flex-direction:column;gap:10px'
   ].join(';');
 
-  const title = isUpdate ? '🔄 Update password?' : '💾 Save to RustVault?';
+  const title = isUpdate ? '🔄 Update password?' : '💾 Save to CRYPTA?';
   const btnText = isUpdate ? 'Update' : 'Save';
 
   banner.innerHTML = `
@@ -372,7 +372,7 @@ async function autofill(id) {
       };
 
       const pwdEl = document.querySelector('input[type="password"]');
-      if (!pwdEl) { alert('RustVault: No password field found.'); return; }
+      if (!pwdEl) { alert('CRYPTA: No password field found.'); return; }
 
       const form    = pwdEl.closest('form') || document.body;
       const userEl  = form.querySelector(

@@ -1,4 +1,4 @@
-// background.js — RustVault Service Worker
+// background.js — CRYPTA Service Worker
 
 // Handle messages from content scripts and popup
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {

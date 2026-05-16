@@ -1,7 +1,7 @@
 # Security and Cryptography Implementation
 
 ## Zero-Knowledge Architecture
-The security of RustVault relies on the principle that the server never receives the master password or any unencrypted credential.
+The security of CRYPTA relies on the principle that the server never receives the master password or any unencrypted credential.
 
 ## 1. Key Derivation (PBKDF2)
 When the user enters their Master Password:

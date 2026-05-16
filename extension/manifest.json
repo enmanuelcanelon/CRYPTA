@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "RustVault Password Manager",
+  "name": "CRYPTA Password Manager",
   "version": "1.0",
   "description": "Ultra-secure self-hosted password manager. Zero-knowledge, AES-256 encrypted.",
   "permissions": ["storage", "activeTab", "scripting", "tabs"],

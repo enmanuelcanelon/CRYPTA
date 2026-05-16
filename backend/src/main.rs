@@ -66,7 +66,7 @@ async fn main() {
         .with_state(state);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    tracing::info!("RustVault backend listening on http://{}", addr);
+    tracing::info!("CRYPTA backend listening on http://{}", addr);
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }

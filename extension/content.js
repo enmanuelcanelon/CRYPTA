@@ -1,11 +1,11 @@
-// content.js — RustVault: auto-fill, auto-save, registration password generator
+// content.js — CRYPTA: auto-fill, auto-save, registration password generator
 
 // ── Visual marker on password fields ──────────────────────────────────────
 function markFields() {
   document.querySelectorAll('input[type="password"]:not([data-rv])').forEach(f => {
     f.dataset.rv   = 'true';
     f.style.boxShadow = 'inset 0 0 0 2px rgba(88,166,255,.5)';
-    f.title        = 'RustVault active';
+    f.title        = 'CRYPTA active';
   });
 }
 markFields();
@@ -57,7 +57,7 @@ function showFillBanner(credentials, pwdField) {
   banner.innerHTML = `
     <span style="font-size:20px;color:#a80000;text-shadow:0 0 10px rgba(168,0,0,.5)">⏣</span>
     <span style="flex:1;font-size:12px;color:#d1d1d1;letter-spacing:1px;text-transform:uppercase">
-      <strong style="font-family:'Cinzel',serif;font-size:14px;color:#fff;letter-spacing:2px">RustVault</strong><br>FILL AS:
+      <strong style="font-family:'Cinzel',serif;font-size:14px;color:#fff;letter-spacing:2px">CRYPTA</strong><br>FILL AS:
       ${credentials.length > 1
         ? `<select id="rv-user-sel" class="rv-select">${options}</select>`
         : `<strong style="color:#a80000">${escHtml(credentials[0].username)}</strong>`
@@ -109,7 +109,7 @@ function offerPasswordGeneration(pwdFields) {
   banner.innerHTML = `
     <span style="font-size:20px;color:#a80000;text-shadow:0 0 10px rgba(168,0,0,.5)">◬</span>
     <span style="flex:1;font-size:12px;color:#d1d1d1;letter-spacing:1px;text-transform:uppercase">
-      <strong style="font-family:'Cinzel',serif;font-size:14px;color:#fff;letter-spacing:2px">RustVault</strong><br>FORGE A NEW CIPHER?
+      <strong style="font-family:'Cinzel',serif;font-size:14px;color:#fff;letter-spacing:2px">CRYPTA</strong><br>FORGE A NEW CIPHER?
     </span>
     <button id="rv-gen-yes" class="rv-btn rv-btn-p">FORGE</button>
     <button id="rv-gen-no"  class="rv-btn rv-btn-s">✕</button>
