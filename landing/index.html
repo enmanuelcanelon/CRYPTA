@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYPTA // THE MONOLITH</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#121317",
+                        "surface-container": "#1f1f24",
+                        "secondary": "#c7c5ce",
+                        "on-secondary-fixed": "#1a1b21",
+                        "surface-variant": "#343439",
+                        "on-error": "#690005",
+                        "on-surface": "#e3e2e7",
+                        "surface-bright": "#38393d",
+                        "primary": "#ffb3af",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-fixed": "#ffdad8",
+                        "on-tertiary": "#003641",
+                        "on-tertiary-container": "#002e39",
+                        "on-secondary": "#2f3037",
+                        "on-secondary-fixed-variant": "#46464d",
+                        "error-container": "#93000a",
+                        "tertiary": "#6ed4f1",
+                        "on-primary": "#68000e",
+                        "outline": "#b08784",
+                        "primary-container": "#ff5357",
+                        "on-secondary-container": "#b8b7c0",
+                        "secondary-fixed": "#e3e1ea",
+                        "on-primary-container": "#5c000b",
+                        "surface-container-highest": "#343439",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#b1ecff",
+                        "on-tertiary-fixed-variant": "#004e5e",
+                        "inverse-primary": "#bf0024",
+                        "surface-tint": "#ffb3af",
+                        "outline-variant": "#5f3e3d",
+                        "primary-fixed-dim": "#ffb3af",
+                        "on-primary-fixed": "#410006",
+                        "surface-container-high": "#292a2e",
+                        "surface-container-low": "#1a1b20",
+                        "on-surface-variant": "#e9bcb9",
+                        "on-background": "#e3e2e7",
+                        "tertiary-container": "#2b9db9",
+                        "inverse-surface": "#e3e2e7",
+                        "secondary-fixed-dim": "#c7c5ce",
+                        "tertiary-fixed-dim": "#6ed4f1",
+                        "surface-container-lowest": "#0d0e12",
+                        "secondary-container": "#484950",
+                        "surface-dim": "#121317",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001f27",
+                        "on-primary-fixed-variant": "#930019",
+                        "background": "#121317",
+                        "monolith-red": "#FF0033"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "32px",
+                        "border-width": "1px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Sora"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "display-lg": ["Sora"],
+                        "display-md": ["Sora"],
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-sm": ["Sora"],
+                        "code-block": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "display-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "code-block": ["13px", {"lineHeight": "1.7", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, #ffffff05 1px, transparent 1px),
+                linear-gradient(to bottom, #ffffff05 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .monolith-border {
+            border: 1px solid #343439;
+        }
+        .monolith-border-active {
+            border: 1px solid #FF0033;
+        }
+        .text-glow-red {
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+        }
+        .cursor-crosshair {
+            cursor: crosshair;
+        }
+        .bracket-tl::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #FF0033;
+            border-left: 2px solid #FF0033;
+        }
+        .bracket-br::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 12px;
+            height: 12px;
+            border-bottom: 2px solid #FF0033;
+            border-right: 2px solid #FF0033;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md cursor-crosshair">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin h-16">
+<div class="font-headline-sm text-headline-sm uppercase tracking-tighter text-primary">
+            CRYPTA // THE MONOLITH
+        </div>
+<div class="hidden md:flex gap-gutter items-center h-full">
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-primary border-b border-primary font-bold" href="#">01_CORE</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">02_ZK_PROOFS</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">03_VAULT</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">04_TERMINAL</a>
+</div>
+<button class="font-label-caps text-label-caps px-6 py-2 border border-outline hover:bg-monolith-red hover:text-black transition-all active:scale-95">
+            INITIALIZE_CONNECTION
+        </button>
+</nav>
+<main class="pt-16 min-h-screen cyber-grid">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-margin border-b border-outline-variant">
+<div class="absolute inset-0 z-0 opacity-40">
+<img alt="The Monolith" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3l3m5BsmlhUReDCs5C8JgLC6VMGZSdpsIEpijwZ2BnRHjMzV2iintWqIrjbFB60AeEpzhlXeCJ14kR1CTZh1iUpjgfiTt4Ykd7C0Hy-4Z6AwE6g8dICuKflnliEWO8mQw2zddZeizhoTevrqGMIv7gGT2O6TYZ01_uX73DkE5XAEHVjFiIFwP4lHPYye1S5iAELIZgatV7vNhxMaI4OkSMVZneBjiNK_OvOJRxQlxX780-YG0ejhUoTKpabBjerN9DXqZCLAPFRQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto w-full flex flex-col items-start space-y-8">
+<div class="space-y-2">
+<span class="font-label-caps text-label-caps text-monolith-red bg-monolith-red/10 px-3 py-1 border border-monolith-red/30">PROTOCOL_V1_INITIATED</span>
+<h1 class="font-display-lg text-display-lg text-white max-w-3xl leading-none">
+                        THE MONOLITH: <br/>
+<span class="text-monolith-red">ABSOLUTE SOVEREIGNTY</span>
+</h1>
+<p class="font-headline-sm text-headline-sm text-secondary max-w-xl">
+                        Self-hosted encryption for the privacy elite. Reject surveillance. Embrace the machine.
+                    </p>
+</div>
+<div class="flex gap-4">
+<button class="bg-monolith-red text-black font-label-caps text-label-caps px-8 py-4 font-bold hover:brightness-125 transition-all">ESTABLISH_NODE</button>
+<button class="border border-outline text-on-surface font-label-caps text-label-caps px-8 py-4 hover:bg-white/5 transition-all">VIEW_WHITEPAPER</button>
+</div>
+<!-- Status Decals -->
+<div class="absolute bottom-12 right-0 flex gap-12 font-label-caps text-label-caps opacity-50">
+<div class="flex flex-col border-l border-monolith-red pl-4">
+<span class="text-monolith-red">UPTIME</span>
+<span>99.9999%</span>
+</div>
+<div class="flex flex-col border-l border-monolith-red pl-4">
+<span class="text-monolith-red">LATENCY</span>
+<span>&lt;0.001MS</span>
+</div>
+<div class="flex flex-col border-l border-monolith-red pl-4">
+<span class="text-monolith-red">ENCRYPTION</span>
+<span>AES-512-ZKP</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-24 px-margin max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Zero-Knowledge Auth -->
+<div class="md:col-span-7 monolith-border bg-surface-container-low p-8 relative overflow-hidden group">
+<div class="bracket-tl"></div>
+<div class="flex justify-between items-start mb-12">
+<div>
+<span class="font-label-caps text-label-caps text-monolith-red mb-2 block">SEC_PROTOCOL // 02</span>
+<h3 class="font-display-md text-display-md text-white">ZERO-KNOWLEDGE AUTH</h3>
+</div>
+<span class="material-symbols-outlined text-monolith-red text-4xl">fingerprint</span>
+</div>
+<div class="bg-black/80 p-6 font-code-block text-code-block rounded-sm border border-monolith-red/20 shadow-[0_0_15px_rgba(255,0,51,0.1)]">
+<div class="flex gap-2 mb-2 text-monolith-red/40">
+<span class="w-2 h-2 rounded-full bg-monolith-red animate-pulse"></span>
+<span>PROVING_STATE: CALCULATING_NONCE</span>
+</div>
+<pre class="text-monolith-red whitespace-pre-wrap">fn verify_proof(pi: Proof, vk: VerifyingKey) -&gt; bool {
+    let mut transcript = Transcript::new(b"MonolithAuth");
+    let result = pi.verify(&amp;vk, &amp;mut transcript);
+    match result {
+        Ok(_) =&gt; true,
+        Err(_) =&gt; false,
+    }
+}</pre>
+</div>
+<p class="mt-6 text-on-surface-variant font-body-md max-w-md">
+                        Validate identity without revealing a single bit of information. Cryptographic certainty through mathematical purity.
+                    </p>
+</div>
+<!-- Monolithic Storage -->
+<div class="md:col-span-5 monolith-border bg-surface-container-highest relative group overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-1000" data-alt="A macro photograph of high-tech server architecture within a dark data center, featuring rows of obsidian-black modules with glowing red status lights. The lighting is low-key and dramatic, emphasizing the metallic textures and the cold, industrial aesthetic of a futuristic secure facility. The palette is dominated by deep blacks and vibrant neon crimson accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR7EttA_dbCi-U0gdhnP48mjncvDQiNhi3lcYEZk5vd6kyZlUM7w8m15pIbv3vjyn6uvjlBf2jYPpJGR5K5e6431eWMZcGjY3t5tZUu7GjjJDGfVIWb96hjtg8A3R_QPPVS6Ox1h7Axc9-prjqwvFVHX5mFfnqnbMW83twPtupvecrBmKM5-MFkLIG39htRihEtupk0B8imF_Wg5_ahGsft4BhMZVqB-c3MW1BJ-6-csfzOvLbDqeXZisNz1y6OU9VTO0sbQ8TgvQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent"></div>
+<div class="relative p-8 h-full flex flex-col justify-end">
+<h3 class="font-display-md text-display-md text-white mb-2">MONOLITHIC STORAGE</h3>
+<p class="text-on-surface-variant font-body-md mb-6">
+                            Immune to hardware failure. Resilient to network partition. Indestructible data integrity.
+                        </p>
+<div class="flex gap-2">
+<div class="w-3 h-3 bg-monolith-red"></div>
+<div class="w-3 h-3 border border-monolith-red"></div>
+<div class="w-3 h-3 border border-monolith-red"></div>
+</div>
+</div>
+</div>
+<!-- Terminal Access -->
+<div class="md:col-span-12 monolith-border bg-surface-container-lowest p-8 relative">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-monolith-red mb-1 block">SYSTEM_LOGS // LIVE_FEED</span>
+<h3 class="font-display-md text-display-md text-white">TERMINAL ACCESS</h3>
+</div>
+<div class="flex gap-4">
+<span class="px-3 py-1 bg-surface-variant text-white font-label-caps text-label-caps">PORT: 8080</span>
+<span class="px-3 py-1 bg-monolith-red text-black font-label-caps text-label-caps font-bold">SECURE_SHELL: ACTIVE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="font-code-block text-code-block text-secondary space-y-1">
+<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:22</span> <span class="text-primary">[INFO]</span> Initializing ZK-Circuit...</div>
+<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:23</span> <span class="text-monolith-red">[WARN]</span> Port scan detected from IP 192.168.1.104</div>
+<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:23</span> <span class="text-tertiary">[SUCC]</span> Threat neutralized. IP blacklisted.</div>
+<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:25</span> <span class="text-primary">[INFO]</span> New connection request: 0x82...f9a</div>
+<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:26</span> <span class="text-tertiary">[SUCC]</span> Auth verified via Monolith_V1_Core.</div>
+</div>
+<div class="flex flex-col justify-center border-l border-outline-variant pl-8">
+<p class="text-on-surface-variant font-body-md mb-4">
+                                Gain total visibility into your infrastructure. Monitor cryptographic operations in real-time with zero overhead.
+                            </p>
+<button class="w-fit font-label-caps text-label-caps border border-monolith-red text-monolith-red px-6 py-2 hover:bg-monolith-red hover:text-black transition-all">LAUNCH_CONSOLE</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Divider -->
+<div class="h-px w-full bg-gradient-to-r from-transparent via-monolith-red to-transparent opacity-30 my-12"></div>
+<!-- Technical Brutalism Section -->
+<section class="py-24 px-margin bg-surface-container-low">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row gap-gutter">
+<div class="flex-1 space-y-12">
+<div class="space-y-4">
+<h2 class="font-display-md text-display-md text-white underline decoration-monolith-red decoration-4 underline-offset-8">HARDWARE AGNOSTIC UTILITY</h2>
+<p class="font-body-lg text-body-lg text-secondary">
+                            Whether running on a custom silicon rack or a legacy x86 monolith, the protocol adapts to extract maximum entropy.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<span class="material-symbols-outlined text-monolith-red">security</span>
+<h4 class="font-headline-sm text-headline-sm text-white">COLD_STORAGE</h4>
+<p class="text-body-md text-on-surface-variant">Air-gapped key management integrated into the core architecture.</p>
+</div>
+<div class="space-y-2">
+<span class="material-symbols-outlined text-monolith-red">router</span>
+<h4 class="font-headline-sm text-headline-sm text-white">MESH_SYNC</h4>
+<p class="text-body-md text-on-surface-variant">Decentralized peer discovery across subterranean network layers.</p>
+</div>
+</div>
+</div>
+<div class="flex-1 monolith-border p-2 bg-surface">
+<div class="w-full h-full min-h-[400px] monolith-border relative flex items-center justify-center bg-black">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50" data-alt="A highly detailed industrial schematic of a monolithic server structure rendered in 3D with sharp, aggressive angles. The scene is illuminated by dramatic red spotlights against a pitch-black background, creating high contrast and deep shadows. The visual style is cold, technical, and brutalist, emphasizing the raw power and security of the machine architecture. The mood is atmospheric and slightly ominous." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRXuHTYTCuXqhuwPhci4RKXqzQVvDhZ35jZjlg0Qy_V-X31Sm5vIFLv4jbvxNBPQeEIzGcKNLrKUG7qkCpF7ZmHSmgZwbfsnhTliNov3xCsc6qqKTRLh0hUd4f2OQwpEx5CVRW2mNnK6X4-iAaGZvBu2sXGeFpkIxs1oSIGuzJIA4MHLCiBsOe_NT_j_EwATEkLSs6p5dh8qgDVo4mTxbMgLvqEhvc6adoOWqbxMLRHdTcDHphzvYgrdnoTucoiiZuhkE-kL9Zqyo"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 border-2 border-monolith-red rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-monolith-red text-6xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="flex flex-col gap-2">
+<div class="font-label-caps text-label-caps text-primary">CRYPTA_PROTOCOL</div>
+<div class="font-body-md text-body-md text-outline">© 2024 CRYPTA_PROTOCOL // ZERO_KNOWLEDGE_AUTH_ACTIVE</div>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">PROTOCOL_V1</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">SECURITY_AUDIT</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">WHITE_PAPER</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">GPG_KEY</a>
+</div>
+</div>
+</footer>
+</body></html>
