@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RustVault: The Monolith</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#030303;--s1:#0a0a0a;--s2:#111111;--bd:#2a0000;--tx:#d1d1d1;--tx2:#707070;--ac:#a80000;--ok:#4a5c4a;--err:#8a0303;--warn:#8a6a03}
+body{width:360px;font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--tx);border:1px solid var(--bd)}
+.view{display:none;padding:24px}.view.active{display:block}
+.logo{font-family:'Cinzel',serif;font-size:24px;font-weight:700;color:#fff;text-shadow:0 0 10px var(--ac);letter-spacing:2px}
+.logo-icon{color:var(--ac);font-size:28px;margin-right:8px;vertical-align:middle}
+.center{text-align:center;margin-bottom:20px}
+.subtitle{font-size:11px;color:var(--tx2);margin-bottom:24px;text-align:center;line-height:1.6;text-transform:uppercase;letter-spacing:1px}
+.lock-icon{font-size:48px;text-align:center;margin-bottom:12px;color:var(--ac);text-shadow:0 0 15px rgba(168,0,0,0.5)}
+
+label{display:block;font-size:10px;color:var(--tx2);margin-bottom:6px;text-transform:uppercase;letter-spacing:2px}
+input{width:100%;padding:12px;background:var(--s1);border:1px solid var(--bd);border-radius:0;color:#fff;font-size:13px;font-family:'JetBrains Mono',monospace;outline:none;transition:all .3s;box-shadow:inset 0 0 10px rgba(0,0,0,0.8)}
+input:focus{border-color:var(--ac);box-shadow:0 0 8px rgba(168,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.8)}
+input::placeholder{color:#333}
+
+.form-group{margin-bottom:18px}
+.irow{position:relative}.irow input{padding-right:90px}
+.ibtn{position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:6px 10px;background:var(--bg);border:1px solid var(--bd);color:var(--ac);font-size:10px;cursor:pointer;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.ibtn:hover{background:var(--ac);color:#000}
+
+.btn{width:100%;padding:14px;border:1px solid var(--bd);border-radius:0;font-size:12px;font-weight:700;cursor:pointer;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:2px;transition:all .3s}
+.btn-p{background:var(--s1);color:var(--ac);border-color:var(--ac)}
+.btn-p:hover{background:var(--ac);color:#000;box-shadow:0 0 15px rgba(168,0,0,0.5)}
+.btn-s{background:var(--bg);color:var(--tx);border:1px solid var(--s2)}
+.btn-s:hover{border-color:#555;color:#fff}
+.btn-d{background:var(--bg);color:#555;border:1px solid #222}
+.btn-d:hover{border-color:var(--err);color:var(--err)}
+
+.btn-sm{width:auto;padding:6px 12px;font-size:10px;letter-spacing:1px}
+.btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.brow{display:flex;gap:10px}
+
+.hdr{display:flex;align-items:center;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--bd)}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.sync{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:1px}
+.dot{width:6px;height:6px;background:var(--ok);box-shadow:0 0 5px var(--ok)}
+.dot.err{background:var(--err);box-shadow:0 0 5px var(--err)}
+.dot.sync{background:var(--warn);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+
+.msg{padding:10px;font-size:11px;margin-bottom:16px;display:none;text-align:center;text-transform:uppercase;letter-spacing:1px}
+.msg.e{background:rgba(168,0,0,.1);border:1px solid var(--err);color:var(--err);display:block}
+.msg.ok{background:rgba(74,92,74,.1);border:1px solid var(--ok);color:var(--ok);display:block}
+
+.srch{position:relative;margin-bottom:20px}.srch input{padding-left:36px;border-style:dashed}
+.srch-ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ac);font-size:14px}
+
+.sec{font-family:'Cinzel',serif;font-size:14px;color:#fff;letter-spacing:2px;margin-bottom:12px;border-bottom:1px solid var(--bd);padding-bottom:6px}
+#add-form{background:var(--s1);border:1px solid var(--bd);padding:18px;margin-bottom:20px;display:none;box-shadow:inset 0 0 20px rgba(0,0,0,1)}
+#add-form.open{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+#cred-list{max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px}
+#cred-list::-webkit-scrollbar{width:2px}
+#cred-list::-webkit-scrollbar-thumb{background:var(--ac)}
+
+.card{background:var(--s1);border:1px solid var(--s2);padding:14px;transition:all .3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;width:2px;height:100%;background:var(--s2);transition:all .3s}
+.card:hover{border-color:var(--bd);box-shadow:0 0 10px rgba(168,0,0,0.1)}
+.card:hover::before{background:var(--ac);box-shadow:0 0 8px var(--ac)}
+.card-site{font-family:'Cinzel',serif;font-weight:700;font-size:14px;color:#fff;margin-bottom:4px;letter-spacing:1px}
+.card-user{font-size:11px;color:var(--tx2);margin-bottom:12px}
+.card-acts{display:flex;gap:6px;flex-wrap:wrap}
+
+.str{height:1px;margin-top:8px;transition:all .3s;width:0;background:var(--s2)}
+.str.w{background:var(--err);width:33%;box-shadow:0 0 5px var(--err)}
+.str.m{background:var(--warn);width:66%;box-shadow:0 0 5px var(--warn)}
+.str.s{background:var(--ac);width:100%;box-shadow:0 0 5px var(--ac)}
+
+.empty{text-align:center;padding:40px 0;color:var(--tx2);font-size:11px;text-transform:uppercase;letter-spacing:2px;font-family:'Cinzel',serif}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="view active" id="view-login">
+  <div class="lock-icon">⏣</div>
+  <div class="center"><span class="logo">RustVault</span></div>
+  <p class="subtitle">The monolith awaits your cipher</p>
+  <div id="login-msg" class="msg"></div>
+  <div class="form-group">
+    <label>Master Cipher</label>
+    <input type="password" id="master-password" placeholder="[ ENTER CYPHER ]" autocomplete="current-password">
+  </div>
+  <button class="btn btn-p" id="unlock-btn">Break Seal</button>
+</div>
+
+<!-- SETUP -->
+<div class="view" id="view-setup">
+  <div class="lock-icon">◬</div>
+  <div class="center"><span class="logo">RustVault</span></div>
+  <p class="subtitle">Forge the master cipher.<br>It cannot be recovered if lost.</p>
+  <div id="setup-msg" class="msg"></div>
+  <div class="form-group">
+    <label>Master Cipher</label>
+    <input type="password" id="setup-pass" placeholder="MIN. 8 CHARACTERS">
+  </div>
+  <div class="form-group">
+    <label>Confirm Cipher</label>
+    <input type="password" id="setup-confirm" placeholder="VERIFY CYPHER">
+  </div>
+  <button class="btn btn-p" id="setup-btn">Forge Vault</button>
+</div>
+
+<!-- VAULT -->
+<div class="view" id="view-vault">
+  <div class="hdr">
+    <span class="logo-icon">⏣</span>
+    <span class="logo" style="font-size:18px">RustVault</span>
+    <div class="hdr-actions">
+      <div class="sync"><div class="dot" id="sync-dot"></div><span id="sync-lbl">Synced</span></div>
+      <button class="btn btn-s btn-sm btn-icon" id="lock-btn" title="Seal vault">⏣</button>
+    </div>
+  </div>
+
+  <div class="srch">
+    <span class="srch-ic">⌖</span>
+    <input type="text" id="search-input" placeholder="QUERY RECORDS...">
+  </div>
+
+  <button class="btn btn-s" id="toggle-add-btn" style="margin-bottom:20px;border-style:dashed">＋ FORGE RECORD</button>
+
+  <div id="add-form">
+    <div class="sec">NEW INCARNATION</div>
+    <div id="add-msg" class="msg"></div>
+    <div class="form-group">
+      <label>DOMAIN</label>
+      <input type="text" id="add-site" placeholder="HOST / REALM" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label>IDENTITY</label>
+      <input type="text" id="add-user" placeholder="SOUL / EMAIL" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label>CIPHER</label>
+      <div class="irow">
+        <input type="password" id="add-pass" placeholder="SECRET KEY" autocomplete="new-password">
+        <button class="ibtn" id="gen-btn">GENERATE</button>
+      </div>
+      <div class="str" id="str-bar"></div>
+    </div>
+    <div class="brow">
+      <button class="btn btn-p" id="save-btn">INSCRIBE</button>
+      <button class="btn btn-s" id="cancel-btn">ABORT</button>
+    </div>
+  </div>
+
+  <div class="sec">RECORDS <span id="cred-count"></span></div>
+  <div id="cred-list"></div>
+</div>
+
+<script src="crypto.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

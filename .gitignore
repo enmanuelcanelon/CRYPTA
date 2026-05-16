@@ -1,0 +1,18 @@
+# Rust dependencies
+/backend/target/
+**/*.rs.bk
+
+# Database
+/backend/vault.db
+/backend/vault.db-shm
+/backend/vault.db-wal
+/backend/data/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
