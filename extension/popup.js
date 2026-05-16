@@ -264,9 +264,11 @@ function renderList(list) {
     <div class="card" id="card-${c.id}">
       <div class="card-site">🌐 ${escHtml(c.site)}</div>
       <div class="card-user">${escHtml(c.username)}</div>
+      <div class="card-pass" id="pass-${c.id}" style="display:none; font-family:'JetBrains Mono',monospace; color:var(--ac); margin-bottom:12px; font-size:11px; word-break:break-all;"></div>
       <div class="card-acts" data-id="${c.id}" data-user="${escAttr(c.username)}">
         <button class="btn btn-s btn-sm btn-copy-user">Copy User</button>
         <button class="btn btn-s btn-sm btn-copy-pass">Copy Pass</button>
+        <button class="btn btn-s btn-sm btn-view-pass">👁 View</button>
         <button class="btn btn-s btn-sm btn-fill">🪄 Fill</button>
         <button class="btn btn-d btn-sm btn-del">Delete</button>
       </div>
@@ -286,12 +288,30 @@ document.getElementById('cred-list').addEventListener('click', async e => {
     copyText(user, e.target);
   } else if (e.target.classList.contains('btn-copy-pass')) {
     copyPass(id, e.target);
+  } else if (e.target.classList.contains('btn-view-pass')) {
+    toggleViewPass(id, e.target);
   } else if (e.target.classList.contains('btn-fill')) {
     autofill(id);
   } else if (e.target.classList.contains('btn-del')) {
     deleteCred(id);
   }
 });
+
+function toggleViewPass(id, btn) {
+  const cred = vault.credentials.find(c => c.id === id);
+  if (!cred) return;
+  const passDiv = document.getElementById(`pass-${id}`);
+  
+  if (passDiv.style.display === 'none') {
+    passDiv.textContent = cred.password;
+    passDiv.style.display = 'block';
+    btn.textContent = '👁 Hide';
+  } else {
+    passDiv.textContent = '';
+    passDiv.style.display = 'none';
+    btn.textContent = '👁 View';
+  }
+}
 
 // ── Add Form ───────────────────────────────────────────────────────────────
 function toggleAddForm(open) {
