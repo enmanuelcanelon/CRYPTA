@@ -1,0 +1,5 @@
+# Ignorar frontend y landing para las estadísticas de lenguajes de GitHub
+extension/* linguist-vendored
+landing/* linguist-vendored
+*.html linguist-vendored
+*.js linguist-vendored
