@@ -4,6 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>CRYPTA // THE MONOLITH</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23FF0033%22>⏣</text></svg>">
+<link rel="icon" type="image/png" href="favicon.ico">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -146,22 +148,22 @@
 <body class="bg-surface text-on-surface font-body-md cursor-crosshair">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin h-16">
-<div class="font-headline-sm text-headline-sm uppercase tracking-tighter text-primary">
-            CRYPTA // THE MONOLITH
+<div class="font-headline-sm text-headline-sm uppercase tracking-tighter text-primary flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <span style="font-size: 24px;">⏣</span> CRYPTA // THE MONOLITH
         </div>
 <div class="hidden md:flex gap-gutter items-center h-full">
-<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-primary border-b border-primary font-bold" href="#">01_CORE</a>
-<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">02_ZK_PROOFS</a>
-<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">03_VAULT</a>
-<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#">04_TERMINAL</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-primary border-b border-primary font-bold" href="#hero">01_CORE</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#zk-auth">02_ZK_PROOFS</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#storage">03_VAULT</a>
+<a class="font-label-caps text-label-caps h-full flex items-center px-4 text-on-surface-variant opacity-70 hover:bg-primary hover:text-on-primary transition-all duration-75" href="#terminal">04_TERMINAL</a>
 </div>
-<button class="font-label-caps text-label-caps px-6 py-2 border border-outline hover:bg-monolith-red hover:text-black transition-all active:scale-95">
+<a href="https://github.com/enmanuelcanelon/CRYPTA" target="_blank" class="font-label-caps text-label-caps px-6 py-2 border border-outline hover:bg-monolith-red hover:text-black transition-all active:scale-95 inline-block">
             INITIALIZE_CONNECTION
-        </button>
+        </a>
 </nav>
 <main class="pt-16 min-h-screen cyber-grid">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-margin border-b border-outline-variant">
+<section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-margin border-b border-outline-variant">
 <div class="absolute inset-0 z-0 opacity-40">
 <img alt="The Monolith" class="w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3l3m5BsmlhUReDCs5C8JgLC6VMGZSdpsIEpijwZ2BnRHjMzV2iintWqIrjbFB60AeEpzhlXeCJ14kR1CTZh1iUpjgfiTt4Ykd7C0Hy-4Z6AwE6g8dICuKflnliEWO8mQw2zddZeizhoTevrqGMIv7gGT2O6TYZ01_uX73DkE5XAEHVjFiIFwP4lHPYye1S5iAELIZgatV7vNhxMaI4OkSMVZneBjiNK_OvOJRxQlxX780-YG0ejhUoTKpabBjerN9DXqZCLAPFRQ"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface"></div>
@@ -178,8 +180,8 @@
                     </p>
 </div>
 <div class="flex gap-4">
-<button class="bg-monolith-red text-black font-label-caps text-label-caps px-8 py-4 font-bold hover:brightness-125 transition-all">ESTABLISH_NODE</button>
-<button class="border border-outline text-on-surface font-label-caps text-label-caps px-8 py-4 hover:bg-white/5 transition-all">VIEW_WHITEPAPER</button>
+<a href="https://github.com/enmanuelcanelon/CRYPTA#option-1-docker-recommended-for-vps" target="_blank" class="bg-monolith-red text-black font-label-caps text-label-caps px-8 py-4 font-bold hover:brightness-125 transition-all inline-block">ESTABLISH_NODE</a>
+<a href="https://github.com/enmanuelcanelon/CRYPTA#%EF%B8%8F-cryptography-military-grade-zero-knowledge" target="_blank" class="border border-outline text-on-surface font-label-caps text-label-caps px-8 py-4 hover:bg-white/5 transition-all inline-block">VIEW_WHITEPAPER</a>
 </div>
 <!-- Status Decals -->
 <div class="absolute bottom-12 right-0 flex gap-12 font-label-caps text-label-caps opacity-50">
@@ -202,7 +204,7 @@
 <section class="py-24 px-margin max-w-container-max mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 <!-- Zero-Knowledge Auth -->
-<div class="md:col-span-7 monolith-border bg-surface-container-low p-8 relative overflow-hidden group">
+<div id="zk-auth" class="md:col-span-7 monolith-border bg-surface-container-low p-8 relative overflow-hidden group">
 <div class="bracket-tl"></div>
 <div class="flex justify-between items-start mb-12">
 <div>
@@ -230,7 +232,7 @@
                     </p>
 </div>
 <!-- Monolithic Storage -->
-<div class="md:col-span-5 monolith-border bg-surface-container-highest relative group overflow-hidden">
+<div id="storage" class="md:col-span-5 monolith-border bg-surface-container-highest relative group overflow-hidden">
 <img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:scale-110 transition-transform duration-1000" data-alt="A macro photograph of high-tech server architecture within a dark data center, featuring rows of obsidian-black modules with glowing red status lights. The lighting is low-key and dramatic, emphasizing the metallic textures and the cold, industrial aesthetic of a futuristic secure facility. The palette is dominated by deep blacks and vibrant neon crimson accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR7EttA_dbCi-U0gdhnP48mjncvDQiNhi3lcYEZk5vd6kyZlUM7w8m15pIbv3vjyn6uvjlBf2jYPpJGR5K5e6431eWMZcGjY3t5tZUu7GjjJDGfVIWb96hjtg8A3R_QPPVS6Ox1h7Axc9-prjqwvFVHX5mFfnqnbMW83twPtupvecrBmKM5-MFkLIG39htRihEtupk0B8imF_Wg5_ahGsft4BhMZVqB-c3MW1BJ-6-csfzOvLbDqeXZisNz1y6OU9VTO0sbQ8TgvQ"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent"></div>
 <div class="relative p-8 h-full flex flex-col justify-end">
@@ -246,7 +248,7 @@
 </div>
 </div>
 <!-- Terminal Access -->
-<div class="md:col-span-12 monolith-border bg-surface-container-lowest p-8 relative">
+<div id="terminal" class="md:col-span-12 monolith-border bg-surface-container-lowest p-8 relative">
 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
 <div>
 <span class="font-label-caps text-label-caps text-monolith-red mb-1 block">SYSTEM_LOGS // LIVE_FEED</span>
@@ -258,7 +260,7 @@
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="font-code-block text-code-block text-secondary space-y-1">
+<div id="terminal-feed" class="font-code-block text-code-block text-secondary space-y-1">
 <div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:22</span> <span class="text-primary">[INFO]</span> Initializing ZK-Circuit...</div>
 <div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:23</span> <span class="text-monolith-red">[WARN]</span> Port scan detected from IP 192.168.1.104</div>
 <div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:04:23</span> <span class="text-tertiary">[SUCC]</span> Threat neutralized. IP blacklisted.</div>
@@ -269,7 +271,7 @@
 <p class="text-on-surface-variant font-body-md mb-4">
                                 Gain total visibility into your infrastructure. Monitor cryptographic operations in real-time with zero overhead.
                             </p>
-<button class="w-fit font-label-caps text-label-caps border border-monolith-red text-monolith-red px-6 py-2 hover:bg-monolith-red hover:text-black transition-all">LAUNCH_CONSOLE</button>
+<button id="launch-console-btn" class="w-fit font-label-caps text-label-caps border border-monolith-red text-monolith-red px-6 py-2 hover:bg-monolith-red hover:text-black transition-all">LAUNCH_CONSOLE</button>
 </div>
 </div>
 </div>
@@ -321,11 +323,42 @@
 <div class="font-body-md text-body-md text-outline">© 2024 CRYPTA_PROTOCOL // ZERO_KNOWLEDGE_AUTH_ACTIVE</div>
 </div>
 <div class="flex gap-8">
-<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">PROTOCOL_V1</a>
-<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">SECURITY_AUDIT</a>
-<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">WHITE_PAPER</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="https://github.com/enmanuelcanelon/CRYPTA" target="_blank">PROTOCOL_V1</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="https://github.com/enmanuelcanelon/CRYPTA/blob/main/docs/security.md" target="_blank">SECURITY_AUDIT</a>
+<a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="https://github.com/enmanuelcanelon/CRYPTA/blob/main/README.md" target="_blank">WHITE_PAPER</a>
 <a class="font-body-md text-body-md text-on-secondary-fixed-variant hover:text-primary hover:underline transition-all" href="#">GPG_KEY</a>
 </div>
 </div>
 </footer>
+
+<script>
+    // Terminal Animation Script
+    document.getElementById('launch-console-btn').addEventListener('click', function() {
+        const feed = document.getElementById('terminal-feed');
+        const logs = [
+            '<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:05:01</span> <span class="text-primary">[EXEC]</span> Connecting to remote node...</div>',
+            '<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:05:02</span> <span class="text-tertiary">[SUCC]</span> Handshake verified. AES-256-GCM established.</div>',
+            '<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:05:04</span> <span class="text-primary">[SYNC]</span> Pulling encrypted vault blob...</div>',
+            '<div class="flex gap-4"><span class="text-on-surface-variant opacity-30">12:05:05</span> <span class="text-tertiary">[SUCC]</span> Decryption complete. Welcome back.</div>'
+        ];
+        
+        let i = 0;
+        this.textContent = "EXECUTING...";
+        this.classList.add('bg-monolith-red', 'text-black');
+        this.disabled = true;
+
+        const interval = setInterval(() => {
+            if (i < logs.length) {
+                feed.innerHTML += logs[i];
+                i++;
+            } else {
+                clearInterval(interval);
+                this.textContent = "CONSOLE_ACTIVE";
+                setTimeout(() => {
+                    window.open('https://github.com/enmanuelcanelon/CRYPTA', '_blank');
+                }, 1000);
+            }
+        }, 800);
+    });
+</script>
 </body></html>
